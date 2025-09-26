@@ -7,9 +7,24 @@ Version 3.0
    Việc click chọn sẽ không ảnh hưởng tới bài đang phát hoặc play bài được click
 3. Lựa chọn chế độ phát:
    - Thứ tự phát:
+
      +) Tuần tự theo thứ tự bài đã chọn
+
      +) Phát xáo trộn
+
     - Lặp lại:
+
       +) Lặp lại 1 bài
+
       +) Lặp lại tất cả các bài đã chọn
    - Bấm nút control để phát nhạc
+4. Chức năng hẹn giờ:
+
+- Bấm vào icon đồng hồ
+
+- Chọn chế độ hẹn giờ:
+
++) Đếm ngược: số giờ, phút
+
++) Mốc thời gian dừng: đến hh:mm
+
