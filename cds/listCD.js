@@ -1,4 +1,5 @@
-function cloneBaiHat(bh) {
+function cloneBaiHat(bh) 
+{
     return new BaiHat(JSON.parse(JSON.stringify(bh)));
 }
 
