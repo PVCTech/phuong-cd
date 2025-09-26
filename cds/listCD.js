@@ -7,7 +7,7 @@ var allCD = [];
 
 ///////////////////////////////////////////////
 var cdHangNgay = [];
-for (let i = 2; i < listTruongTranBichSan.length; i++) 
+for (let i = 0; i < listTruongTranBichSan.length; i++) 
 {
     cdHangNgay.push(cloneBaiHat(listTruongTranBichSan[i]));
 }
