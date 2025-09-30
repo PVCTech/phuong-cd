@@ -11,9 +11,9 @@ var cdNhacTruongLopEm = [];
 
 
 ///////////////////////////////////////////////
-for (let i = 0; i < listTruongTranBichSan.length; i++) 
+for (let i = 0; i < listTruongLop.length; i++)
 {
-    cdNhacTruongLopEm.push(cloneBaiHat(listTruongTranBichSan[i]));
+    cdNhacTruongLopEm.push(cloneBaiHat(listTruongLop[i]));
 }
 
 for (let i = 0; i < cdNhacTruongLopEm.length; i++) 
@@ -21,7 +21,6 @@ for (let i = 0; i < cdNhacTruongLopEm.length; i++)
     cdNhacTruongLopEm[i].trackId = i;
     cdNhacTruongLopEm[i].mediaId = `music_${i}`;
 }
-
 
 
 
