@@ -867,7 +867,6 @@ function startTimeLine()
     }
 }
 
-
 function stopTimeLine()
 {
 	clearInterval(countTimer);

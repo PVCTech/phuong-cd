@@ -5,26 +5,34 @@ function cloneBaiHat(bh)
 
 var allCD = [];
 
+var cdNhacNen = [];
+var cdChaoCo = []; //bao gồm nhạc lễ và nhạc nền
+var cdNhacTruongLopEm = [];
+
+
 ///////////////////////////////////////////////
-var cdHangNgay = [];
 for (let i = 0; i < listTruongTranBichSan.length; i++) 
 {
-    cdHangNgay.push(cloneBaiHat(listTruongTranBichSan[i]));
+    cdNhacTruongLopEm.push(cloneBaiHat(listTruongTranBichSan[i]));
 }
 
-for (let i = 0; i < cdHangNgay.length; i++) 
+for (let i = 0; i < cdNhacTruongLopEm.length; i++) 
 {
-    cdHangNgay[i].trackId = i;
-    cdHangNgay[i].mediaId = `music_${i}`;
+    cdNhacTruongLopEm[i].trackId = i;
+    cdNhacTruongLopEm[i].mediaId = `music_${i}`;
 }
-allCD.push(cdHangNgay);
+
 
 
 
 
 ////////////////////////////////////////////////
-var cdChaoCo = [];
 listNhacLe.forEach(e =>
+{
+    cdChaoCo.push(cloneBaiHat(e));
+});
+
+listNhacNen.forEach(e=>
 {
     cdChaoCo.push(cloneBaiHat(e));
 });
@@ -34,4 +42,6 @@ for (let i = 0; i < cdChaoCo.length; i++)
     cdChaoCo[i].trackId = i;
     cdChaoCo[i].mediaId = `music_${i}`;
 }
+
 allCD.push(cdChaoCo);
+allCD.push(cdNhacTruongLopEm);
