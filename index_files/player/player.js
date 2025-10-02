@@ -665,7 +665,7 @@ class Player_Class
                             </div>
                         </div>
 
-                        <div id="henGio_display" class="henGio_display" onclick="document.getElementById('henGio_chonGio').style.display = 'block';">
+                        <div id="henGio_display" class="henGio_display" onclick="if (this.lock == 0) {document.getElementById('henGio_chonGio').style.display = 'block';}">
                             
                         </div>
                     </div>
