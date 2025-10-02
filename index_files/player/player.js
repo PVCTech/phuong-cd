@@ -539,6 +539,10 @@ class Player_Class
     
     renderPlayingTrack()
     {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+
         var lockImg = this.lock == 1 ? 'lock' : 'unlock';
         var changeCDImg = this.lock == 1 ? '' : 'display:block;';
         var HTML = `
@@ -582,10 +586,18 @@ class Player_Class
                             Playing List: ${this.playingList.list.length}
                         </div>
 
-                        <div id="henGio" class="henGio">
+                        <div id="henGio" class="henGio" onclick="document.getElementById('henGio_chonGio').style.display = 'block';">
                             <img src="${this.rootFolder}index_files/player/img/clock.svg" style="width:30px;">
-                            <input type="number" id="henGio_gio" value="0" style="display:none;">
-                            <input type="number" id="henGio_phut" value="0" style="display:none;">
+                        </div>
+
+                        <div id="henGio_chonGio" class="henGio_chonGio" style="display:none;">
+                            <div style="background:white;padding:10px;box-shadow: 1px 1px 3px #888888;border-radius:5px;width:300px;">
+                                <input type="number" id="henGio_chonGio_input" value="${h}" style="width:50px;"> giờ
+                                <input type="number" id="henGio_chonPhut_input" value="${m}" style="width:50px;"> phút
+                                <br>
+                                <div style="padding:8px;border-radius:5px;background:orange;color:white;text-align:center;box-shadow: 1px 1px 3px #888888;cursor:pointer;" onclick="henGioBatDau();">Bắt đầu hẹn giờ</div>
+                                <div style="padding:8px;border-radius:5px;background:gray;color:white;text-align:center;box-shadow: 1px 1px 3px #888888;cursor:pointer;margin-top:5px;" onclick="document.getElementById('henGio_chonGio').style.display = 'none';">Đóng</div>
+                            </div>
                         </div>
                     </div>
                 </div>
