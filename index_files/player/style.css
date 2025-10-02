@@ -33,3 +33,14 @@
     z-index:2;
     display: none;
 }
+
+.henGio_chonGio
+{
+    position:fixed;
+    left:0px;
+    top:0px;
+    padding-top:100px;
+    width:100%;
+    height:100%;
+    z-index:100;
+}

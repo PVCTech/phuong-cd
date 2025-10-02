@@ -590,7 +590,7 @@ class Player_Class
                             <img src="${this.rootFolder}index_files/player/img/clock.svg" style="width:30px;">
                         </div>
 
-                        <div id="henGio_chonGio" class="henGio_chonGio" style="display:none;">
+                        <div id="henGio_chonGio" class="henGio_chonGio">
                             <div style="background:white;padding:10px;box-shadow: 1px 1px 3px #888888;border-radius:5px;width:300px;">
                                 <input type="number" id="henGio_chonGio_input" value="${h}" style="width:50px;"> giờ
                                 <input type="number" id="henGio_chonPhut_input" value="${m}" style="width:50px;"> phút
