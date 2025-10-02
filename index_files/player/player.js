@@ -534,6 +534,71 @@ class Player_Class
             document.getElementById(this.autoVolume_ButtonId).style.color = "rgba(0,0,0,0.8)";
         }
     }
+
+    henGio_batDau = () =>
+    {
+        var gio = parseInt(document.getElementById('henGio_chonGio_input').value);
+        var phut = parseInt(document.getElementById('henGio_chonPhut_input').value);
+        if (isNaN(gio) || isNaN(phut) || gio <0 || gio >23 || phut <0 || phut >59)
+        {
+            alert('Giờ hoặc phút không hợp lệ!');
+        }
+        else
+        {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            
+            var thoiGianHenGio = (gio - h)*3600 + (phut - m)*60 - s;
+            if (thoiGianHenGio <=0) thoiGianHenGio = thoiGianHenGio + 24*3600;
+        
+        }
+
+        document.getElementById('playingListDisplay').style.display = 'block';
+        countdownPlay = delay / 1000;
+        clearTimeout(countdown_Timeout);
+        countdown_Timeout = setInterval(function (){
+            countdownPlay--;
+            document.getElementById('playingListDisplay').innerText = countdownPlay;
+            if (countdownPlay < 1)
+            {
+                clearInterval(countdown_Timeout);
+            }                            
+        },1000);
+        clearTimeout(delayPlay_Timeout );
+        var that = this;
+        delayPlay_Timeout  = setTimeout(function(){
+            document.getElementById('playingListDisplay').style.display = 'none';
+            that.play(playingListHienTai[index]);
+        },delay);
+
+        document.getElementById('henGio_chonGio').style.display = 'none';
+    }
+
+
+    henGio_ketThuc = () =>
+    {
+        var gio = parseInt(document.getElementById('henGio_chonGio_input').value);
+        var phut = parseInt(document.getElementById('henGio_chonPhut_input').value);
+        if (isNaN(gio) || isNaN(phut) || gio <0 || gio >23 || phut <0 || phut >59)
+        {
+            alert('Giờ hoặc phút không hợp lệ!');
+        }
+        else
+        {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            
+            var thoiGianHenGio = (gio - h)*3600 + (phut - m)*60 - s;
+            if (thoiGianHenGio <=0) thoiGianHenGio = thoiGianHenGio + 24*3600;
+        
+        }    
+
+        document.getElementById('henGio_chonGio').style.display = 'none';
+    }
     
     
     
@@ -595,9 +660,13 @@ class Player_Class
                                 <input type="number" id="henGio_chonGio_input" value="${h}" style="width:50px;"> giờ
                                 <input type="number" id="henGio_chonPhut_input" value="${m}" style="width:50px;"> phút
                                 <br>
-                                <div style="margin-top:20px;width:100px;padding:8px;border-radius:5px;background:orange;color:white;text-align:center;box-shadow: 1px 1px 3px #888888;cursor:pointer;" onclick="henGioBatDau();">Hẹn giờ</div>
-                                <div style="margin-top:20px;width:100px;padding:8px;border-radius:5px;background:gray;color:white;text-align:center;box-shadow: 1px 1px 3px #888888;cursor:pointer;margin-top:5px;" onclick="document.getElementById('henGio_chonGio').style.display = 'none';">Đóng</div>
+                                <div style="margin-top:20px;width:200px;padding:8px;border-radius:5px;background:orange;color:white;text-align:center;box-shadow: 1px 1px 3px #888888;cursor:pointer;" onclick="henGio_batDau();">OK</div>
+                                <div style="margin-top:20px;width:200px;padding:8px;border-radius:5px;background:gray;color:white;text-align:center;box-shadow: 1px 1px 3px #888888;cursor:pointer;margin-top:5px;" onclick="henGio_ketThuc();">Dừng hẹn giờ</div>
                             </div>
+                        </div>
+
+                        <div id="henGio_display" class="henGio_display" onclick="document.getElementById('henGio_chonGio').style.display = 'block';">
+                            
                         </div>
                     </div>
                 </div>
@@ -749,7 +818,65 @@ function stopTimeLine()
 	document.getElementById('timePlaying_Proccessing').style.width = '0px';
 	document.getElementById('timePlaying').innerHTML = '<font color="green">--/--</font>';
 }
+
+
+function henGio_kiemTraHetGio()
+{
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
     
+    var henGio_chonGio = parseInt(document.getElementById('henGio_chonGio_input').value);
+    var henGio_chonPhut = parseInt(document.getElementById('henGio_chonPhut_input').value);
+
+    if (isNaN(henGio_chonGio) || isNaN(henGio_chonPhut) || henGio_chonGio <0 || henGio_chonGio >23 || henGio_chonPhut <0 || henGio_chonPhut >59)
+    {
+    }
+    else
+    {
+        var hetGio = false;
+        if (h > henGio_chonGio || (h == 0 && henGio_chonGio == 23))
+        {
+            hetGio = true;
+        }
+        else if (h == henGio_chonGio)
+        {
+            if (m >= henGio_chonPhut)
+            {
+                hetGio = true;
+            }
+        }
+
+        if (hetGio)
+        {
+            if (Player.trackId > -1)
+            {
+                Player.pause(Player.trackId);
+            }
+        }
+    }
+}
+
+var henGio_Interval = null;
+function henGio_batDau()
+{
+    var henGio_chonGio = parseInt(document.getElementById('henGio_chonGio_input').value);
+    var henGio_chonPhut = parseInt(document.getElementById('henGio_chonPhut_input').value);
+    document.getElementById('henGio_display').innerHTML = `<img src="${rootFolder}index_files/player/img/clock.svg" style="width:30px;">
+${henGio_chonGio}:${henGio_chonPhut}`;
+    henGio_Interval = setInterval(function(){
+        henGio_kiemTraHetGio();
+    },20000);
+    document.getElementById('henGio_chonGio').style.display = 'none';
+}
+
+function henGio_ketThuc()
+{
+    document.getElementById('henGio_display').innerHTML = '';
+    clearInterval(henGio_Interval);
+    henGio_Interval = null;
+    document.getElementById('henGio_chonGio').style.display = 'none';
+}
 
 
 var Player = new Player_Class({rootFolder: rootFolder, listIndex: 0, list : allCD[0], 
