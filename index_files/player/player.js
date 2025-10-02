@@ -9,7 +9,7 @@ clearInterval(countTimer);
 class Player_Class
 {
     constructor({rootFolder, listIndex, list, playMode, playingList,trackId, 
-        autoNextOn, volume, autoVolume, repeat, ngauNhien , lock})
+        autoNextOn, volume, autoVolume, repeat, ngauNhien , lock, henGio = 0, henGio_gio = 0, henGio_phut =0})
     {
         this.rootFolder = rootFolder;
         this.listIndex = listIndex;
@@ -37,7 +37,11 @@ class Player_Class
         this.playing_ProccessId = "playing_Proccess";
         
         this.lock = lock;
-    }
+
+        this.henGio = henGio;
+        this.henGio_gio = henGio_gio;
+        this.henGio_phut = henGio_phut; 
+    }   
 
     changeCD = () =>
     {
@@ -826,8 +830,8 @@ function henGio_kiemTraHetGio()
     var h = today.getHours();
     var m = today.getMinutes();
     
-    var henGio_chonGio = parseInt(document.getElementById('henGio_chonGio_input').value);
-    var henGio_chonPhut = parseInt(document.getElementById('henGio_chonPhut_input').value);
+    var henGio_chonGio = Player.henGio_gio;
+    var henGio_chonPhut = Player.henGio_phut;
 
     if (isNaN(henGio_chonGio) || isNaN(henGio_chonPhut) || henGio_chonGio <0 || henGio_chonGio >23 || henGio_chonPhut <0 || henGio_chonPhut >59)
     {
@@ -860,8 +864,13 @@ function henGio_kiemTraHetGio()
 var henGio_Interval = null;
 function henGio_batDau()
 {
-    var henGio_chonGio = parseInt(document.getElementById('henGio_chonGio_input').value);
-    var henGio_chonPhut = parseInt(document.getElementById('henGio_chonPhut_input').value);
+    Player.henGio = 1;
+    Player.henGio_gio = document.getElementById('henGio_chonGio_input').value;
+    Player.henGio_phut = document.getElementById('henGio_chonPhut_input').value;
+    
+    var henGio_chonGio = parseInt(Player.henGio_gio);
+    var henGio_chonPhut = parseInt(Player.henGio_phut);
+
     document.getElementById('henGio_display').innerHTML = `<span><img src="${rootFolder}index_files/player/img/clock.svg" style="width:10px;">${henGio_chonGio}:${henGio_chonPhut}</span>`;
     henGio_Interval = setInterval(function(){
         henGio_kiemTraHetGio();
@@ -872,6 +881,7 @@ function henGio_batDau()
 
 function henGio_ketThuc()
 {
+    Player.henGio = 0;
     document.getElementById('henGio_display').innerHTML = '';
     clearInterval(henGio_Interval);
     henGio_Interval = null;
