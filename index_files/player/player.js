@@ -692,12 +692,14 @@ class Player_Class
         {
             this.lock = 0;
             document.getElementById('img-change-CD').style.display = 'block';
+            document.getElementById('henGio').style.display = 'block';            
             document.getElementById('player_Lock_Button').src=`${this.rootFolder}index_files/player/img/unlock.png`;
         }
         else
         {
             this.lock = 1;
             document.getElementById('img-change-CD').style.display = 'none';
+            document.getElementById('henGio').style.display = 'none';
             document.getElementById('player_Lock_Button').src=`${this.rootFolder}index_files/player/img/lock.png`;
         }
     }
