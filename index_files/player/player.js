@@ -868,6 +868,7 @@ ${henGio_chonGio}:${henGio_chonPhut}`;
         henGio_kiemTraHetGio();
     },20000);
     document.getElementById('henGio_chonGio').style.display = 'none';
+    document.getElementById('henGio_display').style.display = 'block';
 }
 
 function henGio_ketThuc()
@@ -876,6 +877,7 @@ function henGio_ketThuc()
     clearInterval(henGio_Interval);
     henGio_Interval = null;
     document.getElementById('henGio_chonGio').style.display = 'none';
+    document.getElementById('henGio_display').style.display = 'none';
 }
 
 
