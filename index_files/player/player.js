@@ -665,7 +665,7 @@ class Player_Class
                             </div>
                         </div>
 
-                        <div id="henGio_display" class="henGio_display" onclick="if (this.lock == 0) {document.getElementById('henGio_chonGio').style.display = 'block';}">
+                        <div id="henGio_display" class="henGio_display" onclick="henGio_display_click();">
                             
                         </div>
                     </div>
@@ -879,6 +879,13 @@ function henGio_ketThuc()
     document.getElementById('henGio_display').style.display = 'none';
 }
 
+function henGio_display_click()
+{
+    if (Player.lock == 0)
+    {
+        document.getElementById('henGio_chonGio').style.display = 'block';
+    }
+}
 
 var Player = new Player_Class({rootFolder: rootFolder, listIndex: 0, list : allCD[0], 
         playMode:0, playingList: new PlayingList([],[]), trackId:-1, 
