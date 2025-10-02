@@ -595,8 +595,8 @@ class Player_Class
                                 <input type="number" id="henGio_chonGio_input" value="${h}" style="width:50px;"> giờ
                                 <input type="number" id="henGio_chonPhut_input" value="${m}" style="width:50px;"> phút
                                 <br>
-                                <div style="padding:8px;border-radius:5px;background:orange;color:white;text-align:center;box-shadow: 1px 1px 3px #888888;cursor:pointer;" onclick="henGioBatDau();">Bắt đầu hẹn giờ</div>
-                                <div style="padding:8px;border-radius:5px;background:gray;color:white;text-align:center;box-shadow: 1px 1px 3px #888888;cursor:pointer;margin-top:5px;" onclick="document.getElementById('henGio_chonGio').style.display = 'none';">Đóng</div>
+                                <div style="margin-top:20px;width:100px;padding:8px;border-radius:5px;background:orange;color:white;text-align:center;box-shadow: 1px 1px 3px #888888;cursor:pointer;" onclick="henGioBatDau();">Hẹn giờ</div>
+                                <div style="margin-top:20px;width:100px;padding:8px;border-radius:5px;background:gray;color:white;text-align:center;box-shadow: 1px 1px 3px #888888;cursor:pointer;margin-top:5px;" onclick="document.getElementById('henGio_chonGio').style.display = 'none';">Đóng</div>
                             </div>
                         </div>
                     </div>
