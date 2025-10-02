@@ -26,9 +26,9 @@
 
 .henGio
 {
-    position:fixed;
+    position:absolute;
     right:20px;
-    top:50px;
+    bottom:50px;
     max-width:40px;
     z-index:2;
     display: none;
