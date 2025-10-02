@@ -862,7 +862,7 @@ function henGio_batDau()
 {
     var henGio_chonGio = parseInt(document.getElementById('henGio_chonGio_input').value);
     var henGio_chonPhut = parseInt(document.getElementById('henGio_chonPhut_input').value);
-    document.getElementById('henGio_display').innerHTML = `<span><img src="${rootFolder}index_files/player/img/clock.svg" style="width:20px;">${henGio_chonGio}:${henGio_chonPhut}</span>`;
+    document.getElementById('henGio_display').innerHTML = `<span><img src="${rootFolder}index_files/player/img/clock.svg" style="width:10px;">${henGio_chonGio}:${henGio_chonPhut}</span>`;
     henGio_Interval = setInterval(function(){
         henGio_kiemTraHetGio();
     },20000);
