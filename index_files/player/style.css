@@ -23,3 +23,14 @@
     text-align: center;
     display: none;
 }
+
+.henGio
+{
+    position:absolute;
+    left:50px;
+    bottom:-38px;
+    max-width:30px;
+    z-index:2;
+    text-align: center;
+    display: none;
+}

@@ -427,15 +427,6 @@ class Player_Class
                 }
                 else
                 {
-                    /*
-                    console.log('Current track:',{
-                        id: this.trackId,
-                        name: this.list[this.trackId].tenHienThi,
-                        autoNext: this.list[this.trackId].autoNext,
-                        ngauNhien: this.ngauNhien,
-                        repeat: this.repeat,
-                        playingList: playingListHienTai
-                    }); */
                     var index = playingListHienTai.map(Number).indexOf(Number(this.trackId));                       
                     
                     if (index < playingListHienTai.length - 1) //nếu id của bài hát chưa nằm cuôi playing list (thứ tự lung tung)
@@ -445,7 +436,7 @@ class Player_Class
                     else
                     {
                         index =0;
-                    }       
+                    }
                     /*             
                     console.log('Next track:',{
                         index: index,
@@ -590,56 +581,11 @@ class Player_Class
                         <div id="playingListDisplay" class="playingListDisplay">
                             Playing List: ${this.playingList.list.length}
                         </div>
-                    </div>
-                </div>
-            </center>
-        `;
-        return HTML;
-    }
 
-    renderPlayingTrackToRemote()
-    {
-        var lockImg = this.lock == 1 ? 'lock' : 'unlock';
-        var changeCDImg = this.lock == 1 ? '' : 'display:block;';
-        var HTML = `
-            <center>
-                <div id="player_Container" style="width:100%;">
-                    <table style="width:100%;">
-                        <tr>
-                            <td style="width:25%;position:relative;">
-                                <style>
-                                    .img-change-CD {display:none;}
-                                    .img-change-CD:hover{opacity:1;}
-                                </style>
-                                <div style="position:absolute;left:0px;top:0px;z-index:2;" onclick="sendRemote('changeCD');">
-                                    <img src="${this.rootFolder}index_files/player/img/cd.png" id="img-change-CD" class="img-change-CD" style="width:20px;opacity:0.8;${changeCDImg}">
-                                </div>
-                                <center>
-                                    <style>
-                                        @media only screen and (min-width:577px){.cd_Image_Div{height:12vh;}}
-                                        @media only screen and (max-width:576px){.cd_Image_Div{height:12vh;}}
-                                    </style>
-                                    <div class="cd_Image_Div" style="overflow: hidden;border-radius:5px;padding:8px;text-align:center;">
-                                        <img id="cd_Image" src="${this.rootFolder}index_files/track_images/cd.png?version=2" style="max-height:12vh;opacity:0.8;">
-                                    </div>
-                                </center>
-                            </td>
-                            <td style="vertical-align:text-top;padding-top:5px;position:relative;">
-                                <div style="position:absolute;right:5px;top:0px;" onclick="Player.toggleLock();">
-                                    <img src="${this.rootFolder}index_files/player/img/${lockImg}.png" id="player_Lock_Button" style="width:15px;">
-                                </div>
-                                <span style="font-size:16px;color:green;font-weight:bold;" id="player_TenBaiDangHat">
-                                    ...
-                                </span><br>
-                            </td>
-                        </tr>
-                    </table>
-                    
-                    <div style="position:relative;margin-bottom:10px;" id="timePlaying_Proccess_Div">
-                        <div class="timePlaying" style="position:absolute;right:10px;bottom:20px;z-index:2;" id="timePlaying">--/--</div>
-                        <input type="range" id="${this.playing_ProccessId}" min="0" max="100" value="0" style="width:100%;opacity:0.3;" oninput="Player.scrollToProccess()">
-                        <div id="playingListDisplay" class="playingListDisplay">
-                            Playing List: ${this.playingList.list.length}
+                        <div id="henGio" class="henGio">
+                            <img src="${this.rootFolder}index_files/player/img/clock.svg" style="width:30px;">
+                            <input type="number" id="henGio_gio" value="0" style="display:none;">
+                            <input type="number" id="henGio_phut" value="0" style="display:none;">
                         </div>
                     </div>
                 </div>
@@ -647,6 +593,8 @@ class Player_Class
         `;
         return HTML;
     }
+
+    
 
     renderControl()
     {
@@ -691,7 +639,7 @@ class Player_Class
                     </table>
                 </div>
                 
-                <table style="width:95%;margin-top:10px;margin-bottomk:10px;">
+                <table style="width:95%;margin-top:10px;margin-bottom:10px;">
                     <tr>
                         <td style="width:20px;text-align:right;font-size:10px;">
                             <span id="${this.autoVolume_ButtonId}" style="color:rgba(0,0,0,0.8);" onclick="Player.changeAutoVolume();">Auto</span>
@@ -717,71 +665,6 @@ class Player_Class
     }
 
 
-    renderControlToRemote()
-    {
-        var HTML = `
-        <div style="width:100%;">
-            <center>
-                <div id="Control_Div" style="background:white;box-shadow: 1px 1px 3px #888888;z-index:102;padding-top:5px;padding-bottom:5px;">
-                    <table style="">
-                        <tr>
-                            <td style="">
-                            
-                            </td>
-                            <td style="width:20px;">
-                                <a class="Button" href="javascript:void(0);"><img id="${this.repeat_ButtonId}" src="${this.rootFolder}index_files/img/repeat1.png" style="width:30px;opacity:0.3;" onclick="sendRemote('repeat1');"></a>
-                            </td>
-                            <td style="width:40px;">
-                                <a class="Button" href="javascript:void(0);"><img id="player_Stop_Img" src="${this.rootFolder}index_files/img/stop.png" style="width:30px;opacity:0.3;" onclick="sendRemote('stop');"></a>
-                            </td>
-                            <td style="width:40px;">
-                                <a class="Button" href="javascript:void(0);"><img id="Player_Prev_Img" src="${this.rootFolder}index_files/img/prev.png" style="width:40px;" onclick="sendRemote('prev');"></a>
-                            </td>
-                            <td style="width:70px;">
-                                <center>
-                                    <a class="Button" href="javascript:void(0);"><img id="player_PlayPause_Img" src="${this.rootFolder}index_files/img/play.png" style="width:50px;" onclick="sendRemote('playpause');"></a>
-                                </center>
-                            </td>
-                            <td style="width:40px;">
-                                <a class="Button" href="javascript:void(0);"><img id="Player_Next_Img" src="${this.rootFolder}index_files/img/next.png" style="width:40px;" onclick="sendRemote('next');"></a>
-                            </td>
-                            <td style="width:40px;">
-                                <center>
-                                    <a class="Button" href="javascript:void(0);"><img id="changeAutoNext_Button" src="${this.rootFolder}index_files/img/nextauto.png" style="width:30px;" onclick="sendRemote('autonext');"></a>
-                                </center>
-                            </td>
-                            <td style="width:20px;">
-                                <a class="Button" href="javascript:void(0);"><img id="${this.ngauNhien_ButtonId}" src="${this.rootFolder}index_files/img/repeat136.png" style="width:30px;opacity:0.3;" onclick="sendRemote('repeat136');"></a>
-                            </td>
-                            <td>
-                            
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                
-                <table style="width:95%;margin-top:10px;margin-bottomk:10px;">
-                    <tr>
-                        <td style="width:20px;text-align:right;font-size:10px;">
-                            <span id="${this.autoVolume_ButtonId}" style="color:rgba(0,0,0,0.8);" onclick="sendRemote('autoVolume');">Auto</span>
-                        </td>
-                        <td style="width:30px;text-align:right;">
-                            <img src="${this.rootFolder}index_files/img/speaker.png" style="width:20px;">
-                        </td>
-                        <td>
-                            <input type="range" id="${this.volumeId}" min="0" max="100" value="${this.volume}" style="width:100%;opacity:0.3;" oninput="sendVolume();">
-                        </td>
-                        <td style="width:30px;color:rgba(0,0,0,0.3);">
-                            <div id="${this.volume_Text}">
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </center>
-        </div> `;
-        return HTML;
-    }
-
     renderList()
     {
         var container = document.createElement('div');
@@ -795,27 +678,6 @@ class Player_Class
         this.list.forEach (bh=>
             {
                 tbl.appendChild(bh.render());
-            }
-        );
-
-        container.appendChild(tbl);
-        return container;
-    }
-    
-    
-    renderListToRemote()
-    {
-        var container = document.createElement('div');
-        container.style.background = this.background;
-        container.style.marginTop = "20px";
-        container.style.borderRadius = "5px";
-        container.style.width = "98%";
-
-        const tbl = document.createElement('table');
-        tbl.style.width = "95%";
-        this.list.forEach (bh=>
-            {
-                tbl.appendChild(bh.renderToRemote());
             }
         );
 
