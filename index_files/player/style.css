@@ -26,11 +26,10 @@
 
 .henGio
 {
-    position:absolute;
-    left:50px;
-    bottom:-38px;
-    max-width:30px;
+    position:fixed;
+    right:20px;
+    top:50px;
+    max-width:40px;
     z-index:2;
-    text-align: center;
     display: none;
 }
