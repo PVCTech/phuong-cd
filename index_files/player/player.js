@@ -878,6 +878,7 @@ function henGio_batDau()
     },2000);
     document.getElementById('henGio_chonGio').style.display = 'none';
     document.getElementById('henGio_display').style.display = 'block';
+    document.getElementById('henGio_display_clock').style.display = 'block';
 }
 
 function henGio_ketThuc()
@@ -887,6 +888,7 @@ function henGio_ketThuc()
     henGio_Interval = null;
     document.getElementById('henGio_chonGio').style.display = 'none';
     document.getElementById('henGio_display').style.display = 'none';
+    document.getElementById('henGio_display_clock').style.display = 'none';
 }
 
 function henGio_display_click()
