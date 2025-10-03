@@ -26,5 +26,5 @@ Version 3.0
 
 +) Đếm ngược: số giờ, phút
 
-+) Mốc thời gian dừng: đến hh:mm
++) Mốc thời gian dừng: đến hh:mm  - đã ok
 
