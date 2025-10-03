@@ -870,12 +870,22 @@ function henGio_kiemTraHetGio()
 var henGio_Interval = null;
 function henGio_batDau()
 {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    
+    var h2 = h<10? '0'+ h : h;
+    var m2 = m<10? '0'+ m : m;
+    var s2 = s<10? '0'+ s : s;
+    document.getElementById('henGio_display_clock').innerHTML = `${h2}:${m2}:${s2}`;
+    
     var henGio_chonGio = parseInt(document.getElementById('henGio_chonGio_input').value);
     var henGio_chonPhut = parseInt(document.getElementById('henGio_chonPhut_input').value);
     document.getElementById('henGio_display').innerHTML = `<span><img src="${rootFolder}index_files/player/img/clock.svg" style="width:10px;">${henGio_chonGio}:${henGio_chonPhut}</span>`;
     henGio_Interval = setInterval(function(){
         henGio_kiemTraHetGio();
-    },2000);
+    },1000);
     document.getElementById('henGio_chonGio').style.display = 'none';
     document.getElementById('henGio_display').style.display = 'block';
     document.getElementById('henGio_display_clock').style.display = 'block';
