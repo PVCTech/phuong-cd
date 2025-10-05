@@ -652,7 +652,7 @@ class Player_Class
                             Playing List: ${this.playingList.list.length}
                         </div>
 
-                        <div id="henGio" class="henGio" onclick="document.getElementById('henGio_chonGio').style.display = 'block';">
+                        <div id="henGio" class="henGio" onclick="henGio_display_click(1);">
                             <img src="${this.rootFolder}index_files/player/img/clock.svg" style="width:30px;">
                         </div>
 
@@ -903,9 +903,9 @@ function henGio_ketThuc()
     document.getElementById('henGio_display_clock').style.display = 'none';
 }
 
-function henGio_display_click()
+function henGio_display_click(admin = 0)
 {
-    if (Player.lock == 0)
+    if (Player.lock == 0 || admin == 1)
     {
         var today = new Date();
         var h = today.getHours();
@@ -917,7 +917,7 @@ function henGio_display_click()
 
         document.getElementById('henGio_chonGio_input').value = h;
         document.getElementById('henGio_chonPhut_input').value = m;
-        
+
         document.getElementById('henGio_chonGio').style.display = 'block';
     }
 }
