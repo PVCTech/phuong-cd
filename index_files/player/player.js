@@ -608,6 +608,7 @@ class Player_Class
         var h = today.getHours();
         var m = today.getMinutes();
 
+
         var lockImg = this.lock == 1 ? 'lock' : 'unlock';
         var changeCDImg = this.lock == 1 ? '' : 'display:block;';
         var HTML = `
@@ -882,6 +883,7 @@ function henGio_batDau()
     
     var henGio_chonGio = parseInt(document.getElementById('henGio_chonGio_input').value);
     var henGio_chonPhut = parseInt(document.getElementById('henGio_chonPhut_input').value);
+    
     document.getElementById('henGio_display').innerHTML = `<span><img src="${rootFolder}index_files/player/img/clock.svg" style="width:10px;">${henGio_chonGio}:${henGio_chonPhut}</span>`;
     henGio_Interval = setInterval(function(){
         henGio_kiemTraHetGio();
@@ -905,6 +907,17 @@ function henGio_display_click()
 {
     if (Player.lock == 0)
     {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        m = m + 5;
+        h = m > 59 ? h + 1 : h;
+        h = h > 23 ? 0 : h;
+        m = m > 59 ? m - 60 : m;
+
+        document.getElementById('henGio_chonGio_input').value = h;
+        document.getElementById('henGio_chonPhut_input').value = m;
+        
         document.getElementById('henGio_chonGio').style.display = 'block';
     }
 }
